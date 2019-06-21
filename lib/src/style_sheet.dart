@@ -28,7 +28,9 @@ class MarkdownStyleSheet {
     this.codeblockPadding,
     this.codeblockDecoration,
     this.horizontalRuleDecoration,
-    this.textScaleFactor = 1.0
+    this.textAlign = WrapAlignment.start,
+    this.blockquoteAlign = WrapAlignment.start,
+    this.textScaleFactor = 1.0,
   }) : _styles = <String, TextStyle>{
     'a': a,
     'p': p,
@@ -154,6 +156,8 @@ class MarkdownStyleSheet {
     double codeblockPadding,
     Decoration codeblockDecoration,
     Decoration horizontalRuleDecoration,
+    WrapAlignment textAlign,
+    WrapAlignment blockquoteAlign,
     double textScaleFactor,
   }) {
     return new MarkdownStyleSheet(
@@ -177,6 +181,8 @@ class MarkdownStyleSheet {
       codeblockPadding: codeblockPadding ?? this.codeblockPadding,
       codeblockDecoration: codeblockDecoration ?? this.codeblockDecoration,
       horizontalRuleDecoration: horizontalRuleDecoration ?? this.horizontalRuleDecoration,
+      textAlign: textAlign ?? this.textAlign,
+      blockquoteAlign: blockquoteAlign ?? this.blockquoteAlign,
       textScaleFactor : textScaleFactor ?? this.textScaleFactor,
     );
   }
@@ -241,6 +247,12 @@ class MarkdownStyleSheet {
   /// The decoration to use for `hr` elements.
   final Decoration horizontalRuleDecoration;
 
+  // The [WrapAlignment] to use for normal text. Defaults to start.
+  final WrapAlignment textAlign;
+
+  // The [WrapAlignment] to use for normal text. Defaults to start.
+  final WrapAlignment blockquoteAlign;
+
   // The text scale factor to use in textual elements
   final double textScaleFactor;
 
@@ -275,6 +287,8 @@ class MarkdownStyleSheet {
         && typedOther.codeblockPadding == codeblockPadding
         && typedOther.codeblockDecoration == codeblockDecoration
         && typedOther.horizontalRuleDecoration == horizontalRuleDecoration
+        && typedOther.textAlign == textAlign
+        && typedOther.blockquoteAlign == blockquoteAlign
         && typedOther.textScaleFactor == textScaleFactor;
   }
 
@@ -301,6 +315,8 @@ class MarkdownStyleSheet {
       codeblockPadding,
       codeblockDecoration,
       horizontalRuleDecoration,
+      textAlign,
+      blockquoteAlign,
       textScaleFactor,
     ]);
   }
