@@ -29,25 +29,34 @@ class MarkdownStyleSheet {
     this.codeblockDecoration,
     this.horizontalRuleDecoration,
     this.textAlign = WrapAlignment.start,
+    this.h1Align = WrapAlignment.start,
+    this.h2Align = WrapAlignment.start,
+    this.h3Align = WrapAlignment.start,
+    this.h4Align = WrapAlignment.start,
+    this.h5Align = WrapAlignment.start,
+    this.h6Align = WrapAlignment.start,
+    this.unorderedListAlign = WrapAlignment.start,
+    this.orderedListAlign = WrapAlignment.start,
     this.blockquoteAlign = WrapAlignment.start,
+    this.codeblockAlign = WrapAlignment.start,
     this.textScaleFactor = 1.0,
   }) : _styles = <String, TextStyle>{
-    'a': a,
-    'p': p,
-    'li': p,
-    'code': code,
-    'pre': p,
-    'h1': h1,
-    'h2': h2,
-    'h3': h3,
-    'h4': h4,
-    'h5': h5,
-    'h6': h6,
-    'em': em,
-    'strong': strong,
-    'blockquote': blockquote,
-    'img': img,
-  };
+          'a': a,
+          'p': p,
+          'li': p,
+          'code': code,
+          'pre': p,
+          'h1': h1,
+          'h2': h2,
+          'h3': h3,
+          'h4': h4,
+          'h5': h5,
+          'h6': h6,
+          'em': em,
+          'strong': strong,
+          'blockquote': blockquote,
+          'img': img,
+        };
 
   /// Creates a [MarkdownStyleSheet] from the [TextStyle]s in the provided [ThemeData].
   factory MarkdownStyleSheet.fromTheme(ThemeData theme) {
@@ -56,10 +65,9 @@ class MarkdownStyleSheet {
       a: const TextStyle(color: Colors.blue),
       p: theme.textTheme.body1,
       code: new TextStyle(
-        color: Colors.grey.shade700,
-        fontFamily: "monospace",
-        fontSize: theme.textTheme.body1.fontSize * 0.85
-      ),
+          color: Colors.grey.shade700,
+          fontFamily: "monospace",
+          fontSize: theme.textTheme.body1.fontSize * 0.85),
       h1: theme.textTheme.headline,
       h2: theme.textTheme.title,
       h3: theme.textTheme.subhead,
@@ -74,18 +82,15 @@ class MarkdownStyleSheet {
       listIndent: 32.0,
       blockquotePadding: 8.0,
       blockquoteDecoration: new BoxDecoration(
-        color: Colors.blue.shade100,
-        borderRadius: new BorderRadius.circular(2.0)
-      ),
+          color: Colors.blue.shade100,
+          borderRadius: new BorderRadius.circular(2.0)),
       codeblockPadding: 8.0,
       codeblockDecoration: new BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: new BorderRadius.circular(2.0)
-      ),
+          color: Colors.grey.shade100,
+          borderRadius: new BorderRadius.circular(2.0)),
       horizontalRuleDecoration: new BoxDecoration(
         border: new Border(
-          top: new BorderSide(width: 5.0, color: Colors.grey.shade300)
-        ),
+            top: new BorderSide(width: 5.0, color: Colors.grey.shade300)),
       ),
     );
   }
@@ -99,10 +104,9 @@ class MarkdownStyleSheet {
       a: const TextStyle(color: Colors.blue),
       p: theme.textTheme.body1,
       code: new TextStyle(
-        color: Colors.grey.shade700,
-        fontFamily: "monospace",
-        fontSize: theme.textTheme.body1.fontSize * 0.85
-      ),
+          color: Colors.grey.shade700,
+          fontFamily: "monospace",
+          fontSize: theme.textTheme.body1.fontSize * 0.85),
       h1: theme.textTheme.display3,
       h2: theme.textTheme.display2,
       h3: theme.textTheme.display1,
@@ -117,18 +121,15 @@ class MarkdownStyleSheet {
       listIndent: 32.0,
       blockquotePadding: 8.0,
       blockquoteDecoration: new BoxDecoration(
-        color: Colors.blue.shade100,
-        borderRadius: new BorderRadius.circular(2.0)
-      ),
+          color: Colors.blue.shade100,
+          borderRadius: new BorderRadius.circular(2.0)),
       codeblockPadding: 8.0,
       codeblockDecoration: new BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: new BorderRadius.circular(2.0)
-      ),
+          color: Colors.grey.shade100,
+          borderRadius: new BorderRadius.circular(2.0)),
       horizontalRuleDecoration: new BoxDecoration(
         border: new Border(
-          top: new BorderSide(width: 5.0, color: Colors.grey.shade300)
-        ),
+            top: new BorderSide(width: 5.0, color: Colors.grey.shade300)),
       ),
     );
   }
@@ -157,7 +158,16 @@ class MarkdownStyleSheet {
     Decoration codeblockDecoration,
     Decoration horizontalRuleDecoration,
     WrapAlignment textAlign,
+    WrapAlignment h1Align,
+    WrapAlignment h2Align,
+    WrapAlignment h3Align,
+    WrapAlignment h4Align,
+    WrapAlignment h5Align,
+    WrapAlignment h6Align,
+    WrapAlignment unorderedListAlign,
+    WrapAlignment orderedListAlign,
     WrapAlignment blockquoteAlign,
+    WrapAlignment codeblockAlign,
     double textScaleFactor,
   }) {
     return new MarkdownStyleSheet(
@@ -180,10 +190,20 @@ class MarkdownStyleSheet {
       blockquoteDecoration: blockquoteDecoration ?? this.blockquoteDecoration,
       codeblockPadding: codeblockPadding ?? this.codeblockPadding,
       codeblockDecoration: codeblockDecoration ?? this.codeblockDecoration,
-      horizontalRuleDecoration: horizontalRuleDecoration ?? this.horizontalRuleDecoration,
+      horizontalRuleDecoration:
+          horizontalRuleDecoration ?? this.horizontalRuleDecoration,
       textAlign: textAlign ?? this.textAlign,
+      h1Align: h1Align ?? this.h1Align,
+      h2Align: h2Align ?? this.h2Align,
+      h3Align: h3Align ?? this.h3Align,
+      h4Align: h4Align ?? this.h4Align,
+      h5Align: h5Align ?? this.h5Align,
+      h6Align: h6Align ?? this.h6Align,
+      unorderedListAlign: unorderedListAlign ?? this.unorderedListAlign,
+      orderedListAlign: orderedListAlign ?? this.orderedListAlign,
       blockquoteAlign: blockquoteAlign ?? this.blockquoteAlign,
-      textScaleFactor : textScaleFactor ?? this.textScaleFactor,
+      codeblockAlign: codeblockAlign ?? this.codeblockAlign,
+      textScaleFactor: textScaleFactor ?? this.textScaleFactor,
     );
   }
 
@@ -250,8 +270,35 @@ class MarkdownStyleSheet {
   // The [WrapAlignment] to use for normal text. Defaults to start.
   final WrapAlignment textAlign;
 
-  // The [WrapAlignment] to use for normal text. Defaults to start.
+  // The [WrapAlignment] to use for h1 text. Defaults to start.
+  final WrapAlignment h1Align;
+
+  // The [WrapAlignment] to use for h2 text. Defaults to start.
+  final WrapAlignment h2Align;
+
+  // The [WrapAlignment] to use for h3 text. Defaults to start.
+  final WrapAlignment h3Align;
+
+  // The [WrapAlignment] to use for h4 text. Defaults to start.
+  final WrapAlignment h4Align;
+
+  // The [WrapAlignment] to use for h5 text. Defaults to start.
+  final WrapAlignment h5Align;
+
+  // The [WrapAlignment] to use for h6 text. Defaults to start.
+  final WrapAlignment h6Align;
+
+  // The [WrapAlignment] to use for an unordered list. Defaults to start.
+  final WrapAlignment unorderedListAlign;
+
+  // The [WrapAlignment] to use for an ordered list. Defaults to start.
+  final WrapAlignment orderedListAlign;
+
+  // The [WrapAlignment] to use for a blockquote. Defaults to start.
   final WrapAlignment blockquoteAlign;
+
+  // The [WrapAlignment] to use for a code block. Defaults to start.
+  final WrapAlignment codeblockAlign;
 
   // The text scale factor to use in textual elements
   final double textScaleFactor;
@@ -262,34 +309,41 @@ class MarkdownStyleSheet {
 
   @override
   bool operator ==(dynamic other) {
-    if (identical(this, other))
-      return true;
-    if (other.runtimeType != MarkdownStyleSheet)
-      return false;
+    if (identical(this, other)) return true;
+    if (other.runtimeType != MarkdownStyleSheet) return false;
     final MarkdownStyleSheet typedOther = other;
-    return typedOther.a == a
-        && typedOther.p == p
-        && typedOther.code == code
-        && typedOther.h1 == h1
-        && typedOther.h2 == h2
-        && typedOther.h3 == h3
-        && typedOther.h4 == h4
-        && typedOther.h5 == h5
-        && typedOther.h6 == h6
-        && typedOther.em == em
-        && typedOther.strong == strong
-        && typedOther.blockquote == blockquote
-        && typedOther.img == img
-        && typedOther.blockSpacing == blockSpacing
-        && typedOther.listIndent == listIndent
-        && typedOther.blockquotePadding == blockquotePadding
-        && typedOther.blockquoteDecoration == blockquoteDecoration
-        && typedOther.codeblockPadding == codeblockPadding
-        && typedOther.codeblockDecoration == codeblockDecoration
-        && typedOther.horizontalRuleDecoration == horizontalRuleDecoration
-        && typedOther.textAlign == textAlign
-        && typedOther.blockquoteAlign == blockquoteAlign
-        && typedOther.textScaleFactor == textScaleFactor;
+    return typedOther.a == a &&
+        typedOther.p == p &&
+        typedOther.code == code &&
+        typedOther.h1 == h1 &&
+        typedOther.h2 == h2 &&
+        typedOther.h3 == h3 &&
+        typedOther.h4 == h4 &&
+        typedOther.h5 == h5 &&
+        typedOther.h6 == h6 &&
+        typedOther.em == em &&
+        typedOther.strong == strong &&
+        typedOther.blockquote == blockquote &&
+        typedOther.img == img &&
+        typedOther.blockSpacing == blockSpacing &&
+        typedOther.listIndent == listIndent &&
+        typedOther.blockquotePadding == blockquotePadding &&
+        typedOther.blockquoteDecoration == blockquoteDecoration &&
+        typedOther.codeblockPadding == codeblockPadding &&
+        typedOther.codeblockDecoration == codeblockDecoration &&
+        typedOther.horizontalRuleDecoration == horizontalRuleDecoration &&
+        typedOther.textAlign == textAlign &&
+        typedOther.h1Align == h1Align &&
+        typedOther.h2Align == h2Align &&
+        typedOther.h3Align == h3Align &&
+        typedOther.h4Align == h4Align &&
+        typedOther.h5Align == h5Align &&
+        typedOther.h6Align == h6Align &&
+        typedOther.unorderedListAlign == unorderedListAlign &&
+        typedOther.orderedListAlign == orderedListAlign &&
+        typedOther.blockquoteAlign == blockquoteAlign &&
+        typedOther.codeblockAlign == codeblockAlign &&
+        typedOther.textScaleFactor == textScaleFactor;
   }
 
   @override
@@ -316,7 +370,16 @@ class MarkdownStyleSheet {
       codeblockDecoration,
       horizontalRuleDecoration,
       textAlign,
+      h1Align,
+      h2Align,
+      h3Align,
+      h4Align,
+      h5Align,
+      h6Align,
+      unorderedListAlign,
+      orderedListAlign,
       blockquoteAlign,
+      codeblockAlign,
       textScaleFactor,
     ]);
   }

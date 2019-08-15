@@ -139,6 +139,7 @@ class MarkdownBuilder implements md.NodeVisitor {
     _inlines.last.children.add(new RichText(
       textScaleFactor: styleSheet.textScaleFactor,
       text: span,
+      textAlign: _textAlignForBlockTag(_currentBlockTag),
     ));
   }
 
@@ -331,11 +332,7 @@ class MarkdownBuilder implements md.NodeVisitor {
 
     WrapAlignment blockAlignment = WrapAlignment.start;
     if (_isBlockTag(_currentBlockTag)) {
-      print(["block tag", _currentBlockTag]);
-      if (_currentBlockTag == "p")
-        blockAlignment = styleSheet.textAlign;
-      if (_currentBlockTag == "blockquote")
-        blockAlignment = styleSheet.blockquoteAlign;
+      blockAlignment = _wrapAlignmentForBlockTag(_currentBlockTag);
     }
 
     final _InlineElement inline = _inlines.single;
@@ -367,11 +364,55 @@ class MarkdownBuilder implements md.NodeVisitor {
         mergedTexts.add(new RichText(
           textScaleFactor: styleSheet.textScaleFactor,
           text: mergedSpan,
+          textAlign: _textAlignForBlockTag(_currentBlockTag),
         ));
       } else {
         mergedTexts.add(child);
       }
     }
     return mergedTexts;
+  }
+
+  TextAlign _textAlignForBlockTag(String blockTag) {
+    WrapAlignment wrapAlignment = _wrapAlignmentForBlockTag(blockTag);
+    switch(wrapAlignment) {
+      case WrapAlignment.start: return TextAlign.start;
+      case WrapAlignment.center: return TextAlign.center;
+      case WrapAlignment.end: return TextAlign.end;
+      case WrapAlignment.spaceAround: return TextAlign.justify;
+      case WrapAlignment.spaceBetween: return TextAlign.justify;
+      case WrapAlignment.spaceEvenly: return TextAlign.justify;
+    }
+    return TextAlign.start;
+  }
+
+  WrapAlignment _wrapAlignmentForBlockTag(String blockTag) {
+    if (blockTag == "p")
+      return styleSheet.textAlign;
+    if (blockTag == "h1")
+      return styleSheet.h1Align;
+    if (blockTag == "h2")
+      return styleSheet.h2Align;
+    if (blockTag == "h3")
+      return styleSheet.h3Align;
+    if (blockTag == "h4")
+      return styleSheet.h4Align;
+    if (blockTag == "h5")
+      return styleSheet.h5Align;
+    if (blockTag == "h6")
+      return styleSheet.h6Align;
+    if (blockTag == "ul")
+      return styleSheet.unorderedListAlign;
+    if (blockTag == "old")
+      return styleSheet.orderedListAlign;
+    if (blockTag == "blockquote")
+      return styleSheet.blockquoteAlign;
+    if (blockTag == "pre")
+      return styleSheet.codeblockAlign;
+    if (blockTag == "hr")
+      print("Markdown did not handle hr for alignment");
+    if (blockTag == "li")
+      print("Markdown did not handle li for alignment");
+    return WrapAlignment.start;
   }
 }
