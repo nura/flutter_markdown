@@ -139,6 +139,10 @@ class _MarkdownWidgetState extends State<MarkdownWidget> implements MarkdownBuil
 
   @override
   TextSpan formatText(MarkdownStyleSheet styleSheet, String code) {
+    code = code
+      .replaceAll('&gt;', '>')
+      .replaceAll('&lt;', '<')
+      .replaceAll('&amp;', '&');
     if (widget.syntaxHighlighter != null)
       return widget.syntaxHighlighter.format(code);
     return new TextSpan(style: styleSheet.code, text: code);
