@@ -533,7 +533,7 @@ class MarkdownBuilder implements md.NodeVisitor {
     if (blockTag == "h5") return styleSheet.h5Align;
     if (blockTag == "h6") return styleSheet.h6Align;
     if (blockTag == "ul") return styleSheet.unorderedListAlign;
-    if (blockTag == "old") return styleSheet.orderedListAlign;
+    if (blockTag == "ol") return styleSheet.orderedListAlign;
     if (blockTag == "blockquote") return styleSheet.blockquoteAlign;
     if (blockTag == "pre") return styleSheet.codeblockAlign;
     if (blockTag == "hr") print("Markdown did not handle hr for alignment");
